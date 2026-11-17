@@ -1,0 +1,253 @@
+
+{% extends "base.html" %}
+
+{% block title %}Resume Analysis | ResumeAI{% endblock %}
+
+{% block content %}
+<section class="analysis-page">
+
+    <div class="analysis-header">
+        <span class="analysis-label">RESUMEAI CAREER INTELLIGENCE</span>
+
+        {% if analyzed %}
+            <h1>Your analysis is ready</h1>
+            <p>Here is how your resume matches your target role.</p>
+        {% else %}
+            <h1>Resume Analysis</h1>
+            <p>Understand your strengths and identify the skills you need for your target role.</p>
+        {% endif %}
+    </div>
+
+    {% if not analyzed %}
+    <div class="analysis-upload-card">
+        <h2>Analyze Your Resume</h2>
+        <p class="section-description">
+            Upload your resume and choose the job role you want to pursue.
+        </p>
+
+        <form id="resume-analysis-form"
+              method="POST"
+              action="{{ url_for('resume.analyze') }}"
+              enctype="multipart/form-data">
+
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <div class="form-group">
+                <label for="resume_file">Resume File</label>
+                <input type="file"
+                       id="resume_file"
+                       name="resume_file"
+                       accept=".pdf,.docx"
+                       required>
+                <small>PDF or DOCX · Maximum 10 MB</small>
+            </div>
+
+            <div class="form-group">
+                <label for="job_role">Target Job Role</label>
+                <select id="job_role" name="job_role" required>
+                    <option value="">Select a job role</option>
+
+                    {% for role in job_roles %}
+                    <option value="{{ role }}"
+                        {% if selected_job_role is defined and selected_job_role == role %}selected{% endif %}>
+                        {{ role }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Analyze My Resume
+            </button>
+        </form>
+    </div>
+    {% endif %}
+
+    {% if analyzed %}
+    <div class="analysis-results" id="analysis-results" tabindex="-1">
+
+        <div class="results-heading">
+            <div>
+                <span class="analysis-label">ANALYSIS COMPLETE</span>
+                <h2>Analysis Results</h2>
+                <p>Target role: <strong>{{ selected_job_role }}</strong></p>
+            </div>
+            <div class="report-icon">📊</div>
+        </div>
+
+        <a class="btn btn-outline results-new-analysis"
+           href="{{ url_for('resume.analyze') }}">
+            Analyze another resume
+        </a>
+
+        <div class="match-card">
+            <div>
+                <span class="card-eyebrow">JOB ROLE MATCH</span>
+                <h3>Skills Match Score</h3>
+                <p>Based on the required skills detected in your resume.</p>
+            </div>
+
+            <div class="score-circle">
+                <span>{{ percentage }}%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" style="width: {{ percentage }}%;"></div>
+            </div>
+
+            <div class="score-footer">
+                <span>{{ matched_skills|length }} skills matched</span>
+                <span>{{ missing_skills|length }} skills to develop</span>
+            </div>
+        </div>
+
+        <div class="skills-grid">
+
+            <!-- Skills Present -->
+            <div class="skills-card present-card">
+                <div class="skills-card-heading">
+                    <div class="skills-icon present-icon">✓</div>
+                    <div>
+                        <h3>Skills Present</h3>
+                        <p>Required skills found in your resume</p>
+                    </div>
+                    <span class="count-badge">
+                        {{ matched_skills|length }}
+                    </span>
+                </div>
+
+                {% if matched_skills %}
+                <ul class="skill-list">
+                    {% for skill in matched_skills %}
+                    <li>
+                        <span class="skill-dot present-dot"></span>
+                        {{ skill }}
+                        <span class="skill-status">Matched</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="empty-state">
+                    No required skills were matched for this role.
+                </p>
+                {% endif %}
+            </div>
+
+            <!-- Skills Missing -->
+            <div class="skills-card missing-card">
+                <div class="skills-card-heading">
+                    <div class="skills-icon missing-icon">!</div>
+                    <div>
+                        <h3>Skills Missing</h3>
+                        <p>Role requirements not detected in your resume</p>
+                    </div>
+                    <span class="count-badge">
+                        {{ missing_skills|length }}
+                    </span>
+                </div>
+
+                {% if missing_skills %}
+                <ul class="skill-list">
+                    {% for skill in missing_skills %}
+                    <li>
+                        <span class="skill-dot missing-dot"></span>
+                        {{ skill }}
+                        <span class="skill-status">To learn</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="empty-state">
+                    All listed role requirements were matched.
+                </p>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <!-- All Detected Skills -->
+        <div class="all-skills-card">
+            <div class="skills-card-heading">
+                <div class="skills-icon detected-icon">⌘</div>
+                <div>
+                    <h3>All Technical Skills Detected</h3>
+                    <p>Recognized technical skills found throughout your resume</p>
+                </div>
+                <span class="count-badge">
+                    {{ found_skills|length }}
+                </span>
+            </div>
+
+            {% if found_skills %}
+            <div class="skill-tags">
+                {% for skill in found_skills %}
+                <span class="skill-tag">{{ skill }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="empty-state">
+                No recognized technical skills were detected.
+            </p>
+            {% endif %}
+        </div>
+
+        <p class="report-note">
+            <strong>Note:</strong> A missing skill means it was not detected
+            in the resume text. It does not necessarily mean you lack that skill.
+        </p>
+
+    </div>
+    {% endif %}
+
+    <!-- Loading Indicator -->
+    <div class="analysis-loading" id="analysis-loading" aria-hidden="true">
+        <div class="analysis-loading-panel" role="status" aria-live="polite">
+            <span class="analysis-spinner" aria-hidden="true"></span>
+            <h2>Analyzing your resume</h2>
+            <p>
+                Reading your experience and matching skills to your selected role.
+                This may take a moment.
+            </p>
+            <div class="loading-track" aria-hidden="true">
+                <span></span>
+            </div>
+            <span class="loading-caption">Please keep this page open</span>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const analysisForm = document.getElementById("resume-analysis-form");
+    const loadingState = document.getElementById("analysis-loading");
+
+    if (analysisForm) {
+        analysisForm.addEventListener("submit", function () {
+            if (loadingState) {
+                loadingState.classList.add("is-visible");
+                loadingState.setAttribute("aria-hidden", "false");
+            }
+
+            const submitButton = analysisForm.querySelector(
+                'button[type="submit"]'
+            );
+
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = "Analyzing...";
+            }
+        });
+    }
+
+    const analysisResults = document.getElementById("analysis-results");
+
+    if (analysisResults) {
+        analysisResults.focus({ preventScroll: true });
+        analysisResults.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+</script>
+{% endblock %}

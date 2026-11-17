@@ -1,0 +1,65 @@
+{
+    "Python Developer": [
+        "Python",
+        "OOP",
+        "Data Structures",
+        "SQL",
+        "Django",
+        "Flask",
+        "REST API",
+        "Git"
+    ],
+
+    "Java Developer": [
+        "Java",
+        "OOP",
+        "Data Structures",
+        "SQL",
+        "JDBC",
+        "Spring Boot",
+        "Git"
+    ],
+
+    "Full Stack Developer": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Node.js",
+        "SQL",
+        "REST API",
+        "Git"
+    ],
+
+    "Data Analyst": [
+        "Python",
+        "SQL",
+        "Excel",
+        "Pandas",
+        "Statistics",
+        "Data Visualization",
+        "Power BI"
+    ],
+
+    "Data Scientist": [
+        "Python",
+        "Statistics",
+        "Mathematics",
+        "SQL",
+        "Machine Learning",
+        "Pandas",
+        "NumPy",
+        "Scikit-learn"
+    ],
+
+    "Machine Learning Engineer": [
+        "Python",
+        "Machine Learning",
+        "Deep Learning",
+        "TensorFlow",
+        "PyTorch",
+        "NumPy",
+        "Pandas",
+        "Scikit-learn"
+    ]
+}

@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Learning Dashboard | ResumeAI{% endblock %}
+
+{% block content %}
+
+<div class="user-dashboard">
+
+    <a href="{{ url_for('dashboard') }}" class="ud-back">
+        ← Back to Dashboard
+    </a>
+
+    <div class="ud-header">
+        <h1>Learning Dashboard</h1>
+        {% if target_role %}
+            <p>Your learning plan for {{ target_role }}, based on your resume skills.</p>
+        {% else %}
+            <p>Choose a career role to build a learning plan around its required skills.</p>
+        {% endif %}
+    </div>
+
+    <nav class="learning-role-nav" aria-label="Learning paths by career role">
+        {% for role in job_roles %}
+            <a href="{{ url_for('learning', role=role) }}"
+               {% if target_role == role %}aria-current="page"{% endif %}>
+                {{ role }}
+            </a>
+        {% endfor %}
+    </nav>
+
+
+    <!-- SELECTED ROLE LEARNING RESOURCES -->
+
+    <div class="ud-panel">
+
+        <h2 class="ud-section-title">
+            Learning Resources
+
+            {% if target_role %}
+                - {{ target_role }}
+            {% endif %}
+        </h2>
+
+        {% if not target_role %}
+
+            <p>
+                Select a career role above to view its learning resources.
+            </p>
+
+        {% elif resources %}
+
+            <div class="ud-stat-grid">
+
+                <div class="ud-stat">
+                    <h3>{{ resources|length }}</h3>
+                    <p>Available Resources</p>
+                </div>
+
+                <div class="ud-stat">
+                    <h3>{{ matched_skills|length }} / {{ required_skills|length }}</h3>
+                    <p>Role Skills Found in Your Resume</p>
+                </div>
+
+                <div class="ud-stat">
+                    <h3>{{ missing_skills|length }}</h3>
+                    <p>Skills to Build</p>
+                </div>
+
+            </div>
+
+            <div class="ud-next-step">
+                <h3>Your Skill Focus</h3>
+                {% if not resume_skills %}
+                    <p>Analyze your resume to see which role skills you already have and what to learn next.</p>
+                {% elif missing_skills %}
+                    <p>These role requirements were not found in your latest resume analysis:</p>
+                    {% for skill in missing_skills %}
+                        <span class="ud-tag">{{ skill }}</span>
+                    {% endfor %}
+                {% else %}
+                    <p>Your latest resume analysis includes all listed skills for this role. Explore the resources to keep building them.</p>
+                {% endif %}
+            </div>
+
+            <div class="ud-grid">
+
+                {% for resource in resources %}
+
+                    <a class="ud-stat learning-resource-card"
+                       href="{{ resource.url }}"
+                       target="_blank"
+                       rel="noopener noreferrer">
+
+                        {% if resource.focus_skills %}
+                            <span class="ud-tag">Skill gap resource</span>
+                        {% else %}
+                            <span class="ud-tag">{{ resource.topic }}</span>
+                        {% endif %}
+
+                        <h3>{{ resource.title }}</h3>
+
+                        {% if resource.focus_skills %}
+                            <p>Supports: {{ resource.focus_skills | join(", ") }}</p>
+                        {% endif %}
+
+                        <p>
+                            Provider: {{ resource.provider }}
+                        </p>
+
+                        <p>
+                            Type: {{ resource.type }}
+                        </p>
+
+                        <span class="learning-resource-action">
+                            {% if resource.type == "Video" %}
+                                Watch Video →
+                            {% else %}
+                                Start Learning →
+                            {% endif %}
+                        </span>
+
+                    </a>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <p>
+                No learning resources are available for
+                {{ target_role }} yet.
+            </p>
+
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

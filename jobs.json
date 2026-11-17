@@ -1,0 +1,105 @@
+{
+    "Data Scientist": [
+        {
+            "company": "Ola",
+            "title": "Data Scientist",
+            "location": "Bengaluru",
+            "salary": "₹15–28 LPA",
+            "salary_min_lpa": 15,
+            "salary_max_lpa": 28,
+            "experience": "2-5 years",
+            "work_mode": "Hybrid",
+            "required_skills": ["Python", "XGBoost", "Forecasting", "SQL", "Spark"]
+        },
+        {
+            "company": "IBM",
+            "title": "Data Scientist",
+            "location": "Bengaluru",
+            "salary": "₹10–20 LPA",
+            "salary_min_lpa": 10,
+            "salary_max_lpa": 20,
+            "experience": "1-3 years",
+            "work_mode": "Hybrid",
+            "required_skills": ["Python", "TensorFlow", "NLP", "SQL"]
+        },
+        {
+            "company": "Mastercard",
+            "title": "Data Scientist",
+            "location": "Pune",
+            "salary": "₹15–26 LPA",
+            "salary_min_lpa": 15,
+            "salary_max_lpa": 26,
+            "experience": "3-5 years",
+            "work_mode": "On-site",
+            "required_skills": ["Python", "ML", "SQL", "Hadoop", "Fraud Analytics"]
+        }
+    ],
+    "Machine Learning Engineer": [
+        {
+            "company": "Google",
+            "title": "ML Engineer",
+            "location": "Bengaluru",
+            "salary": "₹35–60 LPA",
+            "salary_min_lpa": 35,
+            "salary_max_lpa": 60,
+            "experience": "3-5 years",
+            "work_mode": "Hybrid",
+            "required_skills": ["Python", "TensorFlow", "MLOps", "Distributed Systems", "DSA"]
+        },
+        {
+            "company": "Microsoft",
+            "title": "ML Engineer",
+            "location": "Hyderabad",
+            "salary": "₹30–55 LPA",
+            "salary_min_lpa": 30,
+            "salary_max_lpa": 55,
+            "experience": "2-5 years",
+            "work_mode": "Hybrid",
+            "required_skills": ["PyTorch", "Azure ML", "Python", "Model Deployment"]
+        },
+        {
+            "company": "NVIDIA",
+            "title": "ML Engineer",
+            "location": "Pune",
+            "salary": "₹28–50 LPA",
+            "salary_min_lpa": 28,
+            "salary_max_lpa": 50,
+            "experience": "3-6 years",
+            "work_mode": "On-site",
+            "required_skills": ["PyTorch", "CUDA", "Deep Learning", "C++"]
+        },
+        {
+            "company": "Sarvam AI",
+            "title": "ML Engineer",
+            "location": "Bengaluru",
+            "salary": "₹20–40 LPA",
+            "salary_min_lpa": 20,
+            "salary_max_lpa": 40,
+            "experience": "1-3 years",
+            "work_mode": "On-site",
+            "required_skills": ["PyTorch", "LLMs", "NLP", "Hugging Face"]
+        },
+        {
+            "company": "Adobe",
+            "title": "ML Engineer",
+            "location": "Noida",
+            "salary": "₹25–45 LPA",
+            "salary_min_lpa": 25,
+            "salary_max_lpa": 45,
+            "experience": "2-5 years",
+            "work_mode": "Hybrid",
+            "required_skills": ["Python", "Deep Learning", "Computer Vision", "Docker"]
+        },
+        {
+            "company": "Qualcomm",
+            "title": "ML Engineer",
+            "location": "Bengaluru",
+            "salary": "₹22–40 LPA",
+            "salary_min_lpa": 22,
+            "salary_max_lpa": 40,
+            "experience": "2-5 years",
+            "work_mode": "On-site",
+            "required_skills": ["Python", "C++", "TensorFlow Lite", "Model Optimization"]
+        }
+    ]
+}

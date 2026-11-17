@@ -1,0 +1,166 @@
+
+{% extends "base.html" %}
+
+{% block title %}ResumeAI | Career Intelligence{% endblock %}
+
+{% block content %}
+
+<header class="hero">
+    <div class="hero-content">
+        <span class="tag">YOUR AI-POWERED CAREER PARTNER</span>
+
+        <h1>Build Your Career<br><span>With Intelligence.</span></h1>
+
+        <p>
+            Analyze your resume, discover skill gaps, improve your profile,
+            and prepare for your dream job — all in one place.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="/register" class="btn btn-primary">
+                Start Your Journey →
+            </a>
+            <a href="#features" class="btn btn-outline">
+                Explore Features
+            </a>
+        </div>
+
+        <div class="hero-stats">
+            <div>
+                <h3>AI-Powered</h3>
+                <p>Resume Analysis</p>
+            </div>
+            <div>
+                <h3>Personalized</h3>
+                <p>Learning Paths</p>
+            </div>
+            <div>
+                <h3>Career-Ready</h3>
+                <p>Interview Practice</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-card">
+        <div class="card-top">
+            <div>
+                <span class="small-label">RESUME INSIGHTS</span>
+                <h2>Your Career Snapshot</h2>
+            </div>
+            <span class="sparkle">✦</span>
+        </div>
+
+        <div class="score-circle">
+            <div>
+                <strong>AI</strong>
+                <span>Analysis</span>
+            </div>
+        </div>
+
+        <div class="insight">
+            <span class="insight-icon purple">✧</span>
+            <div>
+                <strong>Skill Gap Analysis</strong>
+                <p>Identify skills to improve</p>
+            </div>
+        </div>
+
+        <div class="insight">
+            <span class="insight-icon blue">↗</span>
+            <div>
+                <strong>Job Role Matching</strong>
+                <p>Explore suitable career paths</p>
+            </div>
+        </div>
+
+        <div class="insight">
+            <span class="insight-icon green">✓</span>
+            <div>
+                <strong>Learning Roadmap</strong>
+                <p>Plan your next steps</p>
+            </div>
+        </div>
+
+        <p class="demo-note">
+            Illustrative preview — upload a resume to get your own analysis.
+        </p>
+    </div>
+</header>
+
+<section class="features" id="features">
+    <div class="section-heading">
+        <span class="tag">WHAT YOU CAN DO</span>
+        <h2>Everything You Need to <span>Grow</span></h2>
+        <p>Smart tools to help you move from applying to getting hired.</p>
+    </div>
+
+    <div class="feature-grid">
+        <a class="feature-card" href="{{ url_for('resume.analyze') }}">
+            <div class="feature-icon">📄</div>
+            <h3>Resume Analysis</h3>
+            <p>Analyze your resume and identify the skills you bring to your target role.</p>
+        </a>
+
+        <a class="feature-card" href="{{ url_for('job_matching') }}">
+            <div class="feature-icon">🎯</div>
+            <h3>Job Matching</h3>
+            <p>Compare your skills with job requirements and explore matching roles.</p>
+        </a>
+
+        <a class="feature-card" href="{{ url_for('learning') }}">
+            <div class="feature-icon">📚</div>
+            <h3>Learning</h3>
+            <p>Find tutorials and learning resources for your chosen career role.</p>
+        </a>
+
+        <a class="feature-card" href="{{ url_for('career_readiness') }}">
+            <div class="feature-icon">🎤</div>
+            <h3>Interview Prep</h3>
+            <p>Prepare for technical, HR, and communication interviews.</p>
+        </a>
+    </div>
+</section>
+
+<section class="how-it-works" id="how-it-works">
+    <div class="section-heading">
+        <span class="tag">SIMPLE PROCESS</span>
+        <h2>How ResumeAI Works</h2>
+    </div>
+
+    <div class="steps">
+        <div class="step">
+            <span>01</span>
+            <h3>Upload Your Resume</h3>
+            <p>Start with your existing PDF or DOCX resume.</p>
+        </div>
+
+        <div class="step">
+            <span>02</span>
+            <h3>Choose Your Goal</h3>
+            <p>Select a target job role or provide a job description.</p>
+        </div>
+
+        <div class="step">
+            <span>03</span>
+            <h3>Get Your Insights</h3>
+            <p>Review your skills, gaps, and improvement suggestions.</p>
+        </div>
+
+        <div class="step">
+            <span>04</span>
+            <h3>Build Your Skills</h3>
+            <p>Use learning resources to prepare for your career goal.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta" id="about">
+    <h2>Your Next Opportunity Starts Here.</h2>
+    <p>Take the next step toward a stronger resume and a more prepared you.</p>
+    <a href="/register" class="btn btn-primary">
+        Get Started for Free →
+    </a>
+</section>
+
+{% endblock %}
+```

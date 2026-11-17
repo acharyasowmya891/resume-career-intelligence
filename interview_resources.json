@@ -1,0 +1,100 @@
+{
+    "technical_interview": [
+        {
+            "title": "Software Engineering Job Interview - Full Mock Interview",
+            "provider": "freeCodeCamp",
+            "type": "Video",
+            "url": "https://www.youtube.com/watch?v=1qw5ITr3k9E"
+        },
+        {
+            "title": "Google Engineers Demonstrate a Mock Coding Interview",
+            "provider": "Life at Google",
+            "type": "Video",
+            "url": "https://www.youtube.com/watch?v=21pmwl0hrME"
+        },
+        {
+            "title": "Google Coding Interview With a Software Engineer",
+            "provider": "Clément Mihailescu",
+            "type": "Video",
+            "url": "https://www.youtube.com/watch?v=rw4s4M3hFfs"
+        },
+        {
+            "title": "Jane Street Software Engineering Mock Interview",
+            "provider": "Jane Street Engineers",
+            "type": "Video",
+            "url": "https://www.janestreet.com/mock-interview/"
+        },
+        {
+            "title": "Real Mock Interviews with Experienced Engineers",
+            "provider": "interviewing.io",
+            "type": "Video Collection",
+            "url": "https://interviewing.io/mocks"
+        }
+    ],
+
+    "hr_interview": [
+        {
+            "title": "40 Most Asked HR Interview Questions and Answers",
+            "provider": "upGrad",
+            "type": "Video",
+            "url": "https://www.youtube.com/watch?v=zIm_k9j0C50"
+        },
+        {
+            "title": "Job Interview Self Introduction",
+            "provider": "Sundeep and Anand",
+            "type": "Video",
+            "url": "https://www.youtube.com/watch?v=1z0rNf5ORC8"
+        },
+        {
+            "title": "Recruiter Interview Questions and Answers",
+            "provider": "CareerRide",
+            "type": "Video",
+            "url": "https://www.youtube.com/watch?v=RLVaBrFxhhA"
+        },
+        {
+            "title": "HR Round Interview Questions and Answers",
+            "provider": "Corporate Wala",
+            "type": "Video",
+            "url": "https://www.youtube.com/watch?v=Sndw1m-UMqE"
+        },
+        {
+            "title": "HR Mock Interviews and Sample Answers",
+            "provider": "YouTube",
+            "type": "Video Collection",
+            "url": "https://www.youtube.com/results?search_query=HR+mock+interview+for+freshers+with+answers"
+        }
+    ],
+
+    "communication_skills": [
+        {
+            "title": "5 Public Speaking Tips to Speak with Confidence",
+            "provider": "Toastmasters International",
+            "type": "Video",
+            "url": "https://www.toastmasters.org/Resources/Video-Library/five-basic-public-speaking-tips"
+        },
+        {
+            "title": "How to Improve Public Speaking Skills",
+            "provider": "Ali Abdaal",
+            "type": "Video",
+            "url": "https://www.youtube.com/results?search_query=Ali+Abdaal+how+to+improve+public+speaking"
+        },
+        {
+            "title": "5 Public Speaking Tips for Beginners",
+            "provider": "Palesa Dooms",
+            "type": "Video",
+            "url": "https://www.youtube.com/watch?v=D43VhMVgX-k"
+        },
+        {
+            "title": "Improve English Speaking and Communication Skills",
+            "provider": "YouTube",
+            "type": "Video Collection",
+            "url": "https://www.youtube.com/results?search_query=improve+English+communication+skills+for+interviews"
+        },
+        {
+            "title": "Group Discussion Practice and Demonstrations",
+            "provider": "YouTube",
+            "type": "Video Collection",
+            "url": "https://www.youtube.com/results?search_query=group+discussion+mock+interview+demonstration"
+        }
+    ]
+}

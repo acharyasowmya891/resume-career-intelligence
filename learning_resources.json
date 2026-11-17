@@ -1,0 +1,278 @@
+{
+    "Python Developer": [
+        {
+            "topic": "Python Fundamentals",
+            "title": "Python Full Course",
+            "provider": "freeCodeCamp",
+            "type": "Video",
+            "url": "https://youtu.be/rfscVS0vtbw"
+        },
+        {
+            "topic": "Python Programming",
+            "title": "Python Tutorial for Beginners",
+            "provider": "CodeWithHarry",
+            "type": "Video",
+            "url": "https://youtu.be/gfDE2a7MKjA"
+        },
+        {
+            "topic": "Object Oriented Programming",
+            "title": "Python OOP Tutorials",
+            "provider": "Corey Schafer",
+            "type": "Video",
+            "url": "https://www.youtube.com/@coreyms"
+        },
+        {
+            "topic": "SQL and Database",
+            "title": "SQL Full Course",
+            "provider": "freeCodeCamp",
+            "type": "Video",
+            "url": "https://youtu.be/HXV3zeQKqGY"
+        },
+        {
+            "topic": "Flask Development",
+            "title": "Flask Quickstart",
+            "provider": "Flask Official Documentation",
+            "type": "Documentation",
+            "url": "https://flask.palletsprojects.com/en/stable/quickstart/"
+        },
+        {
+            "topic": "REST API",
+            "title": "REST API Development",
+            "provider": "freeCodeCamp",
+            "type": "Video",
+            "url": "https://www.youtube.com/@freecodecamp"
+        }
+    ],
+
+    "Java Developer": [
+        {
+            "topic": "Java Fundamentals",
+            "title": "Java Full Course",
+            "provider": "freeCodeCamp",
+            "type": "Video",
+            "url": "https://youtu.be/grEKMHGYyns"
+        },
+        {
+            "topic": "Java Programming",
+            "title": "Java Tutorial for Beginners",
+            "provider": "Programming with Mosh",
+            "type": "Video",
+            "url": "https://youtu.be/eIrMbAQSU34"
+        },
+        {
+            "topic": "Object Oriented Programming",
+            "title": "Java OOP Concepts",
+            "provider": "Neso Academy",
+            "type": "Video",
+            "url": "https://www.youtube.com/@nesoacademy"
+        },
+        {
+            "topic": "Spring Boot",
+            "title": "Spring Boot Documentation",
+            "provider": "Spring Official",
+            "type": "Documentation",
+            "url": "https://spring.io/projects/spring-boot"
+        },
+        {
+            "topic": "Java Collections and APIs",
+            "title": "Learn Java",
+            "provider": "Oracle",
+            "type": "Documentation",
+            "url": "https://dev.java/learn/"
+        },
+        {
+            "topic": "JDBC and Database Connectivity",
+            "title": "JDBC Tutorial",
+            "provider": "Oracle",
+            "type": "Documentation",
+            "url": "https://docs.oracle.com/javase/tutorial/jdbc/"
+        }
+    ],
+
+    "Full Stack Developer": [
+        {
+            "topic": "HTML",
+            "title": "HTML Crash Course",
+            "provider": "Traversy Media",
+            "type": "Video",
+            "url": "https://youtu.be/UB1O30fR-E"
+        },
+        {
+            "topic": "CSS",
+            "title": "CSS Crash Course",
+            "provider": "Traversy Media",
+            "type": "Video",
+            "url": "https://youtu.be/yfoY53QXEnI"
+        },
+        {
+            "topic": "JavaScript",
+            "title": "JavaScript Tutorials",
+            "provider": "freeCodeCamp",
+            "type": "Video",
+            "url": "https://www.youtube.com/@freecodecamp"
+        },
+        {
+            "topic": "React",
+            "title": "React Official Learning Course",
+            "provider": "React",
+            "type": "Documentation",
+            "url": "https://react.dev/learn"
+        },
+        {
+            "topic": "Node.js and Express",
+            "title": "Node.js and Express Full Course",
+            "provider": "freeCodeCamp",
+            "type": "Video",
+            "url": "https://youtu.be/Oe421EPjeBE"
+        },
+        {
+            "topic": "Full Stack Development",
+            "title": "Full Stack Open",
+            "provider": "University of Helsinki",
+            "type": "Course",
+            "url": "https://fullstackopen.com/en/"
+        },
+        {
+            "topic": "Git and GitHub",
+            "title": "GitHub Documentation",
+            "provider": "GitHub",
+            "type": "Documentation",
+            "url": "https://docs.github.com/en/get-started"
+        }
+    ],
+
+    "Data Analyst": [
+        {
+            "topic": "Excel",
+            "title": "Excel Tutorials",
+            "provider": "freeCodeCamp",
+            "type": "Video",
+            "url": "https://www.youtube.com/@freecodecamp"
+        },
+        {
+            "topic": "SQL",
+            "title": "SQL Full Course",
+            "provider": "freeCodeCamp",
+            "type": "Video",
+            "url": "https://youtu.be/HXV3zeQKqGY"
+        },
+        {
+            "topic": "Python for Data Analysis",
+            "title": "Pandas Full Course",
+            "provider": "freeCodeCamp",
+            "type": "Video",
+            "url": "https://youtu.be/vmEHCJofslg"
+        },
+        {
+            "topic": "Power BI",
+            "title": "Power BI Full Course",
+            "provider": "freeCodeCamp",
+            "type": "Video",
+            "url": "https://youtu.be/i_LwzRVP7bg"
+        },
+        {
+            "topic": "Data Analytics Projects",
+            "title": "Data Analyst Learning Resources",
+            "provider": "Alex The Analyst",
+            "type": "Video",
+            "url": "https://www.youtube.com/@AlexTheAnalyst"
+        },
+        {
+            "topic": "Data Analysis Practice",
+            "title": "Kaggle Learn",
+            "provider": "Kaggle",
+            "type": "Course",
+            "url": "https://www.kaggle.com/learn"
+        }
+    ],
+
+    "Data Scientist": [
+        {
+            "topic": "Python for Data Science",
+            "title": "Python Data Science Tutorials",
+            "provider": "Codebasics",
+            "type": "Video",
+            "url": "https://youtube.com/playlist?list=PLeo1K3hjS3us_ELKYSj_Fth2tIEkdKXvV"
+        },
+        {
+            "topic": "Statistics and Probability",
+            "title": "Statistics for Data Science",
+            "provider": "Dr. Nilesh Sarkar",
+            "type": "Video",
+            "url": "https://youtu.be/Vfo5le26IhY"
+        },
+        {
+            "topic": "Machine Learning",
+            "title": "Machine Learning Tutorials",
+            "provider": "StatQuest",
+            "type": "Video",
+            "url": "https://www.youtube.com/@statquest"
+        },
+        {
+            "topic": "Data Science Projects",
+            "title": "Data Science Learning",
+            "provider": "Kaggle",
+            "type": "Course",
+            "url": "https://www.kaggle.com/learn"
+        },
+        {
+            "topic": "NumPy and Pandas",
+            "title": "Python Data Analysis",
+            "provider": "freeCodeCamp",
+            "type": "Video",
+            "url": "https://www.youtube.com/@freecodecamp"
+        },
+        {
+            "topic": "Scikit-learn",
+            "title": "Scikit-learn Tutorials",
+            "provider": "Scikit-learn",
+            "type": "Documentation",
+            "url": "https://scikit-learn.org/stable/tutorial/index.html"
+        }
+    ],
+
+    "Machine Learning Engineer": [
+        {
+            "topic": "Machine Learning Fundamentals",
+            "title": "Machine Learning with Python",
+            "provider": "Sentdex",
+            "type": "Video",
+            "url": "https://youtube.com/playlist?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v"
+        },
+        {
+            "topic": "Deep Learning",
+            "title": "Practical Deep Learning",
+            "provider": "fast.ai",
+            "type": "Course",
+            "url": "https://course.fast.ai/"
+        },
+        {
+            "topic": "TensorFlow",
+            "title": "TensorFlow Tutorials",
+            "provider": "TensorFlow",
+            "type": "Documentation",
+            "url": "https://www.tensorflow.org/tutorials"
+        },
+        {
+            "topic": "PyTorch",
+            "title": "PyTorch Tutorials",
+            "provider": "PyTorch",
+            "type": "Documentation",
+            "url": "https://pytorch.org/tutorials/"
+        },
+        {
+            "topic": "Natural Language Processing",
+            "title": "Hugging Face NLP Course",
+            "provider": "Hugging Face",
+            "type": "Course",
+            "url": "https://huggingface.co/learn/nlp-course"
+        },
+        {
+            "topic": "Machine Learning Practice",
+            "title": "Kaggle Machine Learning",
+            "provider": "Kaggle",
+            "type": "Course",
+            "url": "https://www.kaggle.com/learn/intro-to-machine-learning"
+        }
+    ]
+}

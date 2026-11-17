@@ -1,0 +1,148 @@
+
+{% extends "base.html" %}
+
+{% block title %}Dashboard | ResumeAI{% endblock %}
+
+{% block content %}
+<div class="user-dashboard">
+
+    <header class="ud-header">
+        <div>
+            <span class="analysis-label">YOUR CAREER SPACE</span>
+            <h1>Welcome, {{ current_user.email.split('@')[0] }}!</h1>
+            <p>Track your goals, review your progress, and plan your next career step.</p>
+        </div>
+
+        <a href="{{ url_for('resume.analyze') }}" class="btn btn-primary">
+            Analyze Resume
+        </a>
+    </header>
+
+    <section class="ud-grid">
+
+        <div class="ud-panel">
+            <div class="ud-profile">
+                <div class="ud-avatar">
+                    {{ current_user.email[0]|upper }}
+                </div>
+
+                <div>
+                    <h2>{{ current_user.email.split('@')[0] }}</h2>
+                    <p>{{ current_user.email }}</p>
+                </div>
+            </div>
+
+            <h2>Career Goal</h2>
+            <p>Choose the job role you want to work towards.</p>
+
+            <form class="ud-form" method="POST"
+                  action="{{ url_for('dashboard') }}">
+
+                <input type="hidden" name="action" value="save_goal">
+                <input type="hidden" name="csrf_token"
+                       value="{{ csrf_token() }}">
+
+                <label for="target_role">Target job role</label>
+
+                <select id="target_role" name="target_role" required>
+                    <option value="">Select a job role</option>
+
+                    {% for role in job_roles %}
+                    <option value="{{ role }}"
+                        {% if target_role == role %}selected{% endif %}>
+                        {{ role }}
+                    </option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit" class="btn btn-primary">
+                    Save Career Goal
+                </button>
+            </form>
+        </div>
+
+        <div class="ud-panel">
+            <h2>Career Progress</h2>
+            <p>Your progress will grow as you complete resume analyses and work on your skill gaps.</p>
+
+            <div class="ud-stat-grid">
+                <div class="ud-stat">
+                    <span>Analyses completed</span>
+                    <strong>{{ recent_analyses|length }}</strong>
+                </div>
+
+                <div class="ud-stat">
+                    <span>Target role</span>
+                    <strong style="font-size: 15px;">
+                        {{ target_role or "Not set" }}
+                    </strong>
+                </div>
+
+                <div class="ud-stat">
+                    <span>Recent activity</span>
+                    <strong>{{ recent_analyses|length }}</strong>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="ud-section-title">
+        <h2>Your Career Dashboards</h2>
+        <p>Choose an area to continue developing your career.</p>
+    </div>
+
+    <section class="ud-links">
+
+        <a class="ud-link-card" href="{{ url_for('job_matching') }}">
+            <div class="ud-link-icon">🎯</div>
+            <h3>Job Matching</h3>
+            <p>Explore job roles and compare required skills with your resume.</p>
+            <span class="ud-link-action">Explore matching →</span>
+        </a>
+
+        <a class="ud-link-card" href="{{ url_for('learning') }}">
+            <div class="ud-link-icon">📚</div>
+            <h3>Learning &amp; Skill Development</h3>
+            <p>Identify missing skills and plan what to learn next.</p>
+            <span class="ud-link-action">Build your skills →</span>
+        </a>
+
+        <a class="ud-link-card" href="{{ url_for('career_readiness') }}">
+            <div class="ud-link-icon">🚀</div>
+            <h3>Interview &amp; Career Readiness</h3>
+            <p>Prepare for interviews and build career confidence.</p>
+            <span class="ud-link-action">Prepare for your career →</span>
+        </a>
+
+    </section>
+
+    <section class="ud-panel">
+        <h2>Recent Activity</h2>
+        <p>Review your latest resume analyses.</p>
+
+        <div class="ud-activity">
+            {% for analysis in recent_analyses %}
+            <div class="ud-activity-item">
+                <span class="ud-activity-dot"></span>
+
+                <div>
+                    <h3>{{ analysis.job_role }}</h3>
+                    <p>
+                        Match score: {{ analysis.percentage }}%
+                        {% if analysis.created_at %}
+                        · {{ analysis.created_at.strftime('%d %b %Y') }}
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            {% else %}
+            <div class="ud-empty">
+                No resume analyses to show yet. Start by analyzing your resume.
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+</div>
+{% endblock %}

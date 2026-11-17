@@ -1,0 +1,52 @@
+
+{% extends "base.html" %}
+
+{% block title %}Interview Prep | ResumeAI{% endblock %}
+
+{% block content %}
+<div class="user-dashboard">
+    <a href="{{ url_for('dashboard') }}" class="ud-back">
+        ← Back to User Dashboard
+    </a>
+
+    <div class="ud-header">
+        <div>
+            <span class="analysis-label">PREPARE FOR YOUR NEXT STEP</span>
+            <h1>Interview & Career Readiness</h1>
+            <p>Prepare for interviews and evaluate your job readiness.</p>
+        </div>
+    </div>
+
+    {% set categories = [
+        ("technical_interview", "Technical Interview", "Practice coding questions, technical concepts and project explanations."),
+        ("hr_interview", "HR Interview", "Prepare your self-introduction, strengths and career goals."),
+        ("communication_skills", "Communication Skills", "Practice explaining your ideas clearly and professionally.")
+    ] %}
+
+    {% for key, title, description in categories %}
+        <section class="ud-panel interview-section">
+            <h2>{{ title }}</h2>
+            <p>{{ description }}</p>
+
+            {% if interview_data[key] %}
+                <div class="ud-grid interview-resource-grid">
+                    {% for resource in interview_data[key] %}
+                        <a class="ud-stat interview-resource-card"
+                           href="{{ resource.url }}"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <span class="ud-tag">{{ resource.type }}</span>
+                            <h3>{{ resource.title }}</h3>
+                            <p>Provider: {{ resource.provider }}</p>
+                            <span class="interview-resource-action">Open resource →</span>
+                        </a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No resources are currently available in this category.</p>
+            {% endif %}
+        </section>
+    {% endfor %}
+
+</div>
+{% endblock %}

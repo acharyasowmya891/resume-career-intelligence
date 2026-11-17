@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}ResumeAI | Career Intelligence{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- Shared Navigation Bar -->
+    <nav class="navbar">
+        <a href="{{ url_for('home') }}" class="logo">
+            Resume<span>AI</span>
+        </a>
+
+        <div class="nav-links">
+            {% if current_user.is_authenticated %}
+
+                <a href="{{ url_for('resume.analyze') }}"
+                   {% if request.endpoint == 'resume.analyze' %}aria-current="page"{% endif %}>
+                    Resume Analysis
+                </a>
+
+                <a href="{{ url_for('job_matching') }}"
+                   {% if request.endpoint == 'job_matching' %}aria-current="page"{% endif %}>
+                    Job Matching
+                </a>
+
+                <a href="{{ url_for('learning') }}"
+                   {% if request.endpoint == 'learning' %}aria-current="page"{% endif %}>
+                    Learning
+                </a>
+
+                <a href="{{ url_for('career_readiness') }}"
+                   {% if request.endpoint == 'career_readiness' %}aria-current="page"{% endif %}>
+                    Interview Prep
+                </a>
+
+            {% else %}
+
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('home') }}#features">Features</a>
+                <a href="{{ url_for('home') }}#how-it-works">How It Works</a>
+                <a href="{{ url_for('home') }}#about">About</a>
+
+            {% endif %}
+        </div>
+
+        <div class="nav-buttons">
+            {% if current_user.is_authenticated %}
+
+                <span class="welcome-user">
+                    Hi, {{ current_user.name }}!
+                </span>
+
+                <form action="{{ url_for('auth.logout') }}" method="POST">
+                    <input
+                        type="hidden"
+                        name="csrf_token"
+                        value="{{ csrf_token() }}"
+                    >
+
+                    <button type="submit" class="btn btn-outline">
+                        Sign Out
+                    </button>
+                </form>
+
+            {% else %}
+
+                <a href="{{ url_for('auth.login') }}"
+                   class="btn btn-outline">
+                    Sign In
+                </a>
+
+                <a href="{{ url_for('auth.register') }}"
+                   class="btn btn-primary">
+                    Get Started
+                </a>
+
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="auth-message {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+    </div>
+
+    <!-- Page-Specific Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Shared Footer -->
+    <footer>
+        <a href="{{ url_for('home') }}" class="logo">
+            Resume<span>AI</span>
+        </a>
+
+        <p>AI-powered insights for your career journey.</p>
+
+        <p class="copyright">
+            © 2026 ResumeAI. All rights reserved.
+        </p>
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+
+</body>
+</html>

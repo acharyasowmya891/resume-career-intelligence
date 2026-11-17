@@ -1,0 +1,309 @@
+{% extends "base.html" %}
+
+{% block title %}Job Matching | ResumeAI{% endblock %}
+
+{% block content %}
+
+<div class="container job-matching-page">
+
+    <!-- Page Heading -->
+    <div class="page-header">
+        <h1>Job Matching</h1>
+        <p>Discover job opportunities that match your career preferences and resume skills.</p>
+    </div>
+
+    <!-- Job Preferences Form -->
+    <div class="ud-panel jm-filter-panel">
+
+        <div class="jm-section-heading">
+            <h2>Find Your Matching Jobs</h2>
+            <p>Enter your preferences to find suitable career opportunities.</p>
+        </div>
+
+        <form method="POST" action="{{ url_for('job_matching') }}" class="jm-form">
+
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <div class="jm-form-grid">
+
+                <!-- Job Role -->
+                <div class="jm-form-group">
+                    <label for="role">Job Role</label>
+
+                    <select name="role" id="role" required>
+                        <option value="">Select Job Role</option>
+
+                        {% for role in job_roles %}
+                            <option value="{{ role }}"
+                                {% if filters.role == role %}selected{% endif %}>
+                                {{ role }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Preferred Location -->
+                <div class="jm-form-group">
+                    <label for="location">Preferred Location</label>
+
+                    <input
+                        type="text"
+                        name="location"
+                        id="location"
+                        placeholder="e.g. Bangalore"
+                        value="{{ filters.location }}"
+                        required
+                    >
+                </div>
+
+                <!-- Minimum Salary -->
+                <div class="jm-form-group">
+                    <label for="min_salary">Minimum Expected Salary (LPA)</label>
+
+                    <input
+                        type="number"
+                        name="min_salary"
+                        id="min_salary"
+                        min="0"
+                        step="0.5"
+                        placeholder="e.g. 3"
+                        value="{{ filters.min_salary }}"
+                    >
+                </div>
+
+                <!-- Maximum Salary -->
+                <div class="jm-form-group">
+                    <label for="max_salary">Maximum Expected Salary (LPA)</label>
+
+                    <input
+                        type="number"
+                        name="max_salary"
+                        id="max_salary"
+                        min="0"
+                        step="0.5"
+                        placeholder="e.g. 8"
+                        value="{{ filters.max_salary }}"
+                    >
+                </div>
+
+                <!-- Experience -->
+                <div class="jm-form-group">
+                    <label for="experience">Experience Level</label>
+
+                    <select name="experience" id="experience">
+
+                        <option value="">Any Experience</option>
+
+                        <option value="Fresher"
+                            {% if filters.experience == "Fresher" %}selected{% endif %}>
+                            Fresher
+                        </option>
+
+                        <option value="0-2 years"
+                            {% if filters.experience == "0-2 years" %}selected{% endif %}>
+                            0–2 Years
+                        </option>
+
+                        <option value="2-5 years"
+                            {% if filters.experience == "2-5 years" %}selected{% endif %}>
+                            2–5 Years
+                        </option>
+
+                        <option value="5+ years"
+                            {% if filters.experience == "5+ years" %}selected{% endif %}>
+                            5+ Years
+                        </option>
+
+                    </select>
+                </div>
+
+                <!-- Work Mode -->
+                <div class="jm-form-group">
+                    <label for="work_mode">Work Mode</label>
+
+                    <select name="work_mode" id="work_mode">
+
+                        <option value="">Any Work Mode</option>
+
+                        <option value="On-site"
+                            {% if filters.work_mode == "On-site" %}selected{% endif %}>
+                            On-site
+                        </option>
+
+                        <option value="Remote"
+                            {% if filters.work_mode == "Remote" %}selected{% endif %}>
+                            Remote
+                        </option>
+
+                        <option value="Hybrid"
+                            {% if filters.work_mode == "Hybrid" %}selected{% endif %}>
+                            Hybrid
+                        </option>
+
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="jm-button-container">
+                <button type="submit" class="jm-search-btn">
+                    Find Matching Jobs
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- Error Message -->
+    {% if api_error %}
+        <div class="ud-panel jm-message">
+            <h3>Job Search Notice</h3>
+            <p>{{ api_error }}</p>
+        </div>
+    {% endif %}
+
+
+    <!-- Information Message -->
+    {% if message %}
+        <div class="ud-panel jm-message">
+            <p>{{ message }}</p>
+        </div>
+    {% endif %}
+
+
+    <!-- Job Results -->
+    {% if searched %}
+
+        <div class="jm-results-heading">
+            <h2>Matching Job Opportunities</h2>
+            <p>Explore jobs ranked according to your resume skills and selected preferences.</p>
+        </div>
+
+        {% if jobs %}
+
+            <div class="jm-results-grid">
+
+                {% for job in jobs %}
+
+                    <div class="ud-panel job-card">
+
+                        <!-- Company and Job Title -->
+                        <div class="jm-job-header">
+
+                            <div class="jm-company-info">
+                                <h2>{{ job.title }}</h2>
+                                <h3>{{ job.company }}</h3>
+                            </div>
+
+                            <div class="jm-match-badge">
+                                {{ job.match_percentage }}% Match
+                            </div>
+
+                        </div>
+
+
+                        <!-- Job Information -->
+                        <div class="jm-job-details">
+
+                            <div class="jm-detail-item">
+                                <strong>Location</strong>
+                                <span>{{ job.location }}</span>
+                            </div>
+
+                            <div class="jm-detail-item">
+                                <strong>Salary / Package</strong>
+                                <span>{{ job.salary }}</span>
+                            </div>
+
+                            <div class="jm-detail-item">
+                                <strong>Experience Required</strong>
+                                <span>{{ job.experience }}</span>
+                            </div>
+
+                            <div class="jm-detail-item">
+                                <strong>Work Mode</strong>
+                                <span>{{ job.work_mode }}</span>
+                            </div>
+
+                        </div>
+
+
+                        <hr>
+
+                        <!-- Required Skills -->
+                        <div class="jm-skills-section">
+                            <h3>Company Required Skills</h3>
+
+                            {% if job.required_skills %}
+
+                                {% for skill in job.required_skills %}
+                                    <span class="ud-tag">{{ skill }}</span>
+                                {% endfor %}
+
+                            {% else %}
+                                <p>No required skills listed.</p>
+                            {% endif %}
+                        </div>
+
+
+                        <hr>
+
+                        <!-- Matching Skills -->
+                        <div class="jm-skills-section">
+                            <h3>Skills You Have</h3>
+
+                            {% if job.matched_skills %}
+
+                                {% for skill in job.matched_skills %}
+                                    <span class="ud-tag jm-matched-tag">{{ skill }}</span>
+                                {% endfor %}
+
+                            {% else %}
+                                <p>No matching skills found.</p>
+                            {% endif %}
+                        </div>
+
+
+                        <hr>
+
+                        <!-- Missing Skills -->
+                        <div class="jm-skills-section">
+                            <h3>Missing Skills</h3>
+
+                            {% if job.missing_skills %}
+
+                                {% for skill in job.missing_skills %}
+                                    <span class="ud-tag jm-missing-tag">{{ skill }}</span>
+                                {% endfor %}
+
+                            {% else %}
+                                <p>Great! You have all the listed required skills.</p>
+                            {% endif %}
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="ud-panel jm-empty-state">
+                <h3>No Matching Jobs Found</h3>
+                <p>
+                    No listings matched your selected preferences.
+                    Try adjusting your location, salary range,
+                    experience level, or work mode.
+                </p>
+            </div>
+
+        {% endif %}
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
